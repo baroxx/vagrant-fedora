@@ -5,17 +5,26 @@ This project provides a basic template for vagrant with some provisioners of som
 # Prerequesites
 
 - Vagrant (can be installed via dnf)
-- vagrant-libvirt plugin
-- The daemon libvirtd is running
+- Plugins
+  - vagrant-libvirt
+- libvirt/qemu
 
 # run
 
-There is the bash script "run.sh" to run vagrant up with predefined provisioners for unix bases operation systems. 
+The bash script [run.sh](run.sh) runs "vagrant up" with predefined provisioners. 
 
 # clean up 
 
-You can destroy the created machine with the the bash script "cleanup.sh".
+You can destroy the created machine with the sript [cleanup.sh](cleanup.sh).
 
-# Further information
+# Available provisioners
 
-You can find further information about vagrant and libvirt in the vagrant-libvirt repository: https://github.com/vagrant-libvirt/vagrant-libvirt
+You can set the provisioners in the run script. The provisioners are comma separated.
+
+**The main provisioner should always be set, as it installs the graphical components (gnome). The final provisioner installs the lates updates and reboots the system.**
+
+# Additional information
+
+You can find further information about vagrant and libvirt in the [vagrant-libvirt repository](https://github.com/vagrant-libvirt/vagrant-libvirt)
+
+[Here](https://libvirt.org/formatdomain.html#elementsVideo) are more details about the video settings available.

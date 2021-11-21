@@ -1,3 +1,3 @@
 #!/bin/bash
 
-vagrant up --provider libvirt 
+vagrant up --provider libvirt --provision-with main,final
