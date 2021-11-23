@@ -26,9 +26,9 @@ Vagrant.configure("2") do |config|
 
     config.vm.provision "main", type: "shell", args: [USER_NAME, PASSWORD, KEYMAP], run: "never", inline: <<-SHELL 
         echo -e "main provisioner is running..."
-        USER_NAME=$1
-        PASSWORD=$2
-        KEYMAP=$3    
+        readonly USER_NAME=$1
+        readonly PASSWORD=$2
+        readonly KEYMAP=$3    
     
         useradd $USER_NAME
         echo $USER_NAME:$PASSWORD | sudo chpasswd
@@ -44,9 +44,13 @@ Vagrant.configure("2") do |config|
         echo -e "main provisioner finished..."
     SHELL
 
+    config.vm.provision "toolbox", type: "shell", run: "never", inline: <<-SHELL
+        curl -fsSL https://raw.githubusercontent.com/nagygergo/jetbrains-toolbox-install/master/jetbrains-toolbox.sh | bash
+    SHELL
+
     config.vm.provision "final", type: "shell", args: [USER_NAME], run: "never", inline: <<-SHELL
         echo -e "finalising..."
-        USER_NAME=$1
+        readonly USER_NAME=$1
         dnf -y update
         chown -R $USER_NAME:$USER_NAME /home/$USER_NAME
         reboot
