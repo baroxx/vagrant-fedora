@@ -20,10 +20,12 @@ Vagrant.configure("2") do |config|
         libvirt.keymap = KEYMAP
         libvirt.graphics_type = "spice"
         libvirt.video_type = "virtio"
+        libvirt.cpu_mode = "host-passthrough"
+        libvirt.channel :type => 'spicevmc', :target_name => 'com.redhat.spice.0', :target_type => 'virtio'
     end
 
     config.vm.provision "main", type: "shell", args: [USER_NAME, PASSWORD, KEYMAP], run: "never", inline: <<-SHELL 
-        echo -e "The main provisioner is running..."
+        echo -e "main provisioner is running..."
         USER_NAME=$1
         PASSWORD=$2
         KEYMAP=$3    
@@ -43,10 +45,12 @@ Vagrant.configure("2") do |config|
     SHELL
 
     config.vm.provision "final", type: "shell", args: [USER_NAME], run: "never", inline: <<-SHELL
+        echo -e "finalising..."
         USER_NAME=$1
         dnf -y update
         chown -R $USER_NAME:$USER_NAME /home/$USER_NAME
         reboot
+        echo -e "provisioning finished..."
     SHELL
 end
   
