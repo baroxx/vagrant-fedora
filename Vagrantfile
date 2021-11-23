@@ -54,6 +54,11 @@ Vagrant.configure("2") do |config|
         echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
     SHELL
 
+    config.vm.provision "terraform", type: "shell", run: "never", inline: <<-SHELL
+        dnf config-manager --add-repo https://rpm.releases.hashicorp.com/fedora/hashicorp.repo
+        dnf install -y terraform
+    SHELL
+
     config.vm.provision "final", type: "shell", args: [USER_NAME], run: "never", inline: <<-SHELL
         echo -e "finalising..."
         readonly USER_NAME=$1
