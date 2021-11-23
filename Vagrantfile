@@ -72,6 +72,12 @@ Vagrant.configure("2") do |config|
         flatpak install -y flathub com.getpostman.Postman
     SHELL
 
+    config.vm.provision "code", type: "shell", run: "never", inline: <<-SHELL
+        rpm --import https://packages.microsoft.com/keys/microsoft.asc
+        sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
+        dnf install -y code
+    SHELL
+
     config.vm.provision "final", type: "shell", args: [USER_NAME], run: "never", inline: <<-SHELL
         echo -e "finalising..."
         readonly USER_NAME=$1
