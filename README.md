@@ -22,11 +22,13 @@ You can destroy the created machine with the sript [cleanup.sh](cleanup.sh).
 You can set the provisioners in the run script. The provisioners are comma separated.
 
 - toolbox (Jetbrains Toolbox)
-- angular
-- terraform
-- kubectl
+- angular (npm via dnf)
+- terraform (via dnf)
+- kubectl (via dnf)
 - postman (via flatpak)
 - code (Visual Studio Code)
+- helm (via dnf)
+- slack (via flatpak)
 
 **The main provisioner should always be set, as it installs the graphical components (gnome). The final provisioner installs the lates updates and reboots the system.**
 
