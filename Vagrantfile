@@ -82,6 +82,10 @@ Vagrant.configure("2") do |config|
         dnf install -y helm
     SHELL
 
+    config.vm.provision "slack", type: "shell", run: "never", inline: <<-SHELL
+        flatpak install -y flathub com.slack.Slack
+    SHELL
+
     config.vm.provision "final", type: "shell", args: [USER_NAME], run: "never", inline: <<-SHELL
         echo -e "finalising..."
         readonly USER_NAME=$1
