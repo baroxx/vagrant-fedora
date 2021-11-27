@@ -29,6 +29,10 @@ You can set the provisioners in the run script. The provisioners are comma separ
 - code (Visual Studio Code)
 - helm (via dnf)
 - slack (via flatpak)
+- aws
+  - aws cli v2
+  - cdk
+  - sam cli
 
 **The main provisioner should always be set, as it installs the graphical components (gnome). The final provisioner installs the lates updates and reboots the system.**
 
