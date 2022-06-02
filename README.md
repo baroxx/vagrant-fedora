@@ -11,7 +11,7 @@ This project provides a basic template for vagrant with some provisioners of som
 
 # run
 
-The bash script [run.sh](run.sh) runs "vagrant up" with predefined provisioners. 
+The bash script [run.sh](run.sh) runs "vagrant up" with predefined provisioners.
 
 # clean up 
 
