@@ -43,6 +43,8 @@ Vagrant.configure("2") do |config|
 
     config.vm.provision "aws", type: "shell", run: "never", path: "provisioner/aws.sh"
 
+    config.vm.provision "ansible", type: "shell", run: "never", path: "provisioner/ansible.sh"
+
     config.vm.provision "final", type: "shell", args: [USER_NAME], run: "never", path: "provisioner/final.sh"
 end
   
