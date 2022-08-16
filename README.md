@@ -33,6 +33,8 @@ You can set the provisioners in the run script. The provisioners are comma separ
   - aws cli v2
   - cdk
   - sam cli
+- ansible
+- texlive
 
 **The main provisioner should always be set, as it installs the graphical components (gnome). The final provisioner installs the lates updates and reboots the system.**
 

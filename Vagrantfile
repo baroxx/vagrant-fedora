@@ -7,6 +7,9 @@ USER_NAME = "fedora"
 PASSWORD = "fedora"
 KEYMAP = "de"
 
+# basic, medium, full
+TEXLIVE_PACKAGE_SIZE = "basic"
+
 Vagrant.configure("2") do |config|
     config.vm.box = BOX
     config.vm.box_version = BOX_VERSION
@@ -44,6 +47,8 @@ Vagrant.configure("2") do |config|
     config.vm.provision "aws", type: "shell", run: "never", path: "provisioner/aws.sh"
 
     config.vm.provision "ansible", type: "shell", run: "never", path: "provisioner/ansible.sh"
+
+    config.vm.provision "texlive", type: "shell", args: [TEXLIVE_PACKAGE_SIZE], run: "never", path: "provisioner/texlive.sh"
 
     config.vm.provision "final", type: "shell", args: [USER_NAME], run: "never", path: "provisioner/final.sh"
 end
