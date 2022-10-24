@@ -12,6 +12,7 @@ unzip $AWS_ZIP_FILE -d $AWS_DIR
 ./$AWS_DIR/aws/install
 
 echo -e "installing cdk..."
+dnf install -y nodejs
 npm install -g aws-cdk
 
 echo -e "installing sam cli..."
