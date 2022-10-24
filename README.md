@@ -4,10 +4,11 @@ This project provides a basic template for vagrant with some provisioners of som
 
 # Prerequesites
 
-- Vagrant (can be installed via dnf)
+- Vagrant (via dnf or from [vagrantup.com/downloads](https://www.vagrantup.com/downloads))
 - Plugins
   - vagrant-libvirt
-- libvirt/qemu
+- libvirt/qemu (via dnf)
+- Daemons libvirtd and virtnetworkd enabled
 
 # run
 
@@ -25,6 +26,7 @@ You can set the provisioners in the run script. The provisioners are comma separ
 - angular (npm via dnf)
 - terraform (via dnf)
 - kubectl (via dnf)
+- minikube (via dnf - new RPM)
 - postman (via flatpak)
 - code (Visual Studio Code)
 - helm (via dnf)

@@ -36,6 +36,8 @@ Vagrant.configure("2") do |config|
 
     config.vm.provision "kubectl", type: "shell", args: [USER_NAME], run: "never", path: "provisioner/kubectl.sh"
 
+    config.vm.provision "minikube", type: "shell", args: [USER_NAME], run: "never", path: "provisioner/minikube.sh"
+
     config.vm.provision "postman", type: "shell", run: "never", path: "provisioner/postman.sh"
 
     config.vm.provision "code", type: "shell", run: "never", path: "provisioner/code.sh"
