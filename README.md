@@ -27,6 +27,7 @@ You can set the provisioners in the run script. The provisioners are comma separ
 - terraform (via dnf)
 - kubectl (via dnf)
 - minikube (via dnf - new RPM)
+- lens (via dnf - new RPM)
 - postman (via flatpak)
 - code (Visual Studio Code)
 - helm (via dnf)

@@ -9,6 +9,7 @@ KEYMAP = "de"
 
 # basic, medium, full
 TEXLIVE_PACKAGE_SIZE = "basic"
+LENS_VERSION = "2022.10.311317-latest"
 
 Vagrant.configure("2") do |config|
     config.vm.box = BOX
@@ -37,6 +38,8 @@ Vagrant.configure("2") do |config|
     config.vm.provision "kubectl", type: "shell", args: [USER_NAME], run: "never", path: "provisioner/kubectl.sh"
 
     config.vm.provision "minikube", type: "shell", args: [USER_NAME], run: "never", path: "provisioner/minikube.sh"
+
+    config.vm.provision "lens", type: "shell", args: [LENS_VERSION], run: "never", path: "provisioner/lens.sh"
 
     config.vm.provision "postman", type: "shell", run: "never", path: "provisioner/postman.sh"
 
