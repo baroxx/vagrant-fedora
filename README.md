@@ -5,10 +5,10 @@ This project provides a basic template for vagrant with some provisioners of som
 # Prerequesites
 
 - Vagrant (via dnf or from [vagrantup.com/downloads](https://www.vagrantup.com/downloads))
-- Plugins
-  - vagrant-libvirt
-- libvirt/qemu (via dnf)
+- libvirt and libvirt-devel (via dnf)
 - Daemons libvirtd and virtnetworkd enabled
+- Plugins
+  - vagrant-libvirt `vagrant plugin install vagrant-libvirt`
 
 # run
 
