@@ -1,6 +1,6 @@
-BOX = "fedora/36-cloud-base"
-BOX_VERSION = "36-20220504.1"
-HOSTNAME = "fed36"
+BOX = "fedora/37-cloud-base"
+BOX_VERSION = "37.20221105.0"
+HOSTNAME = "fed37"
 CPUS = 4
 MEMORY = "8192"
 USER_NAME = "fedora"
