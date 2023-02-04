@@ -27,6 +27,11 @@ Vagrant.configure("2") do |config|
         libvirt.channel :type => 'spicevmc', :target_name => 'com.redhat.spice.0', :target_type => 'virtio'
     end
 
+    config.vm.provider "virtualbox" do |virtualbox|
+        virtualbox.cpus = CPUS
+        virtualbox.memory = MEMORY
+    end
+
     config.vm.provision "main", type: "shell", args: [USER_NAME, PASSWORD, KEYMAP], run: "never", path: "provisioner/main.sh"
 
     config.vm.provision "toolbox", type: "shell", run: "never", path: "provisioner/toolbox.sh"
