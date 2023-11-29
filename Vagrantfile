@@ -1,6 +1,6 @@
-BOX = "fedora/37-cloud-base"
-BOX_VERSION = "37.20221105.0"
-HOSTNAME = "fed37"
+BOX = "fedora/39-cloud-base"
+BOX_VERSION = "39.20231031.1"
+HOSTNAME = "twitch"
 CPUS = 4
 MEMORY = "8192"
 USER_NAME = "fedora"
@@ -16,20 +16,15 @@ Vagrant.configure("2") do |config|
     config.vm.box_version = BOX_VERSION
   
     config.vm.hostname = HOSTNAME
-  
-    config.vm.provider "libvirt" do |libvirt|
-        libvirt.cpus = CPUS
-        libvirt.memory = MEMORY
-        libvirt.keymap = KEYMAP
-        libvirt.graphics_type = "spice"
-        libvirt.video_type = "virtio"
-        libvirt.cpu_mode = "host-passthrough"
-        libvirt.channel :type => 'spicevmc', :target_name => 'com.redhat.spice.0', :target_type => 'virtio'
-    end
 
     config.vm.provider "virtualbox" do |virtualbox|
         virtualbox.cpus = CPUS
         virtualbox.memory = MEMORY
+        virtualbox.name = HOSTNAME
+
+        virtualbox.customize ['modifyvm', :id, '--accelerate3d', 'on']
+        virtualbox.customize ['modifyvm', :id, '--graphicscontroller', 'vmsvga']
+        virtualbox.customize ['modifyvm', :id, '--vram', '128']
     end
 
     config.vm.provision "main", type: "shell", args: [USER_NAME, PASSWORD, KEYMAP], run: "never", path: "provisioner/main.sh"
@@ -41,6 +36,8 @@ Vagrant.configure("2") do |config|
     config.vm.provision "terraform", type: "shell", run: "never", path: "provisioner/terraform.sh"
 
     config.vm.provision "kubectl", type: "shell", args: [USER_NAME], run: "never", path: "provisioner/kubectl.sh"
+
+    config.vm.provision "k9s", type: "shell", args: [USER_NAME], run: "never", path: "provisioner/k9s.sh"
 
     config.vm.provision "minikube", type: "shell", args: [USER_NAME], run: "never", path: "provisioner/minikube.sh"
 

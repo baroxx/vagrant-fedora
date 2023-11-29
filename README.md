@@ -31,6 +31,7 @@ You can set the provisioners in the run script. The provisioners are comma separ
 - angular (npm via dnf)
 - terraform (via dnf)
 - kubectl (via dnf)
+- k9s (via webi)
 - minikube (via dnf - new RPM)
 - lens (via dnf - new RPM)
 - postman (via flatpak)

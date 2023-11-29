@@ -1,3 +1,3 @@
 #!/bin/bash
 
-vagrant up --provider libvirt --provision-with main,toolbox,angular,terraform,kubectl,minikube,lens,postman,code,helm,slack,aws,ansible,texlive,final
+vagrant up --provider virtualbox --provision-with main,angular,terraform,kubectl,k9s,minikube,postman,code,helm,aws,ansible,final
